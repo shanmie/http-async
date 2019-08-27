@@ -82,11 +82,11 @@ public class SSLThrough {
         return sslFactory;
     }
 
-    public synchronized SSLConnectionSocketFactory getSSLCONNSF(SSLProtocolVersion sslpv) {
+    public synchronized SSLConnectionSocketFactory getSSLConnSf(SSLProtocolVersion sslPv) {
         if (sslConnFactory != null)
             return sslConnFactory;
         try {
-            SSLContext sc = getSSLContext(sslpv);
+            SSLContext sc = getSSLContext(sslPv);
 //	    	sc.init(null, new TrustManager[] { simpleVerifier }, null);
             sc.init(null, new TrustManager[]{simpleVerifier}, new java.security.SecureRandom());
             sslConnFactory = new SSLConnectionSocketFactory(sc, simpleVerifier);
@@ -96,11 +96,11 @@ public class SSLThrough {
         return sslConnFactory;
     }
 
-    public synchronized SSLIOSessionStrategy getSSLIOSS(SSLProtocolVersion sslpv) {
+    public synchronized SSLIOSessionStrategy getSSLIos(SSLProtocolVersion sslPv) {
         if (sslIOSessionStrategy != null)
             return sslIOSessionStrategy;
         try {
-            SSLContext sc = getSSLContext(sslpv);
+            SSLContext sc = getSSLContext(sslPv);
 //			sc.init(null, new TrustManager[] { simpleVerifier }, null);
             sc.init(null, new TrustManager[]{simpleVerifier}, new java.security.SecureRandom());
             sslIOSessionStrategy = new SSLIOSessionStrategy(sc, simpleVerifier);

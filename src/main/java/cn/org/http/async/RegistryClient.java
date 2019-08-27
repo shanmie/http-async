@@ -92,7 +92,7 @@ public class RegistryClient extends HttpClientBuilder {
 //		//设置连接池大小
 //		PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
 //		return (RegistryClient) this.setConnectionManager(connManager);
-        return (RegistryClient) this.setSSLSocketFactory(sslInstance.getSSLCONNSF(sslPv));
+        return (RegistryClient) this.setSSLSocketFactory(sslInstance.getSSLConnSf(sslPv));
     }
 
 
@@ -131,7 +131,7 @@ public class RegistryClient extends HttpClientBuilder {
         Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder
                 .<ConnectionSocketFactory>create()
                 .register("http", PlainConnectionSocketFactory.INSTANCE)
-                .register("https", sslInstance.getSSLCONNSF(sslPv)).build();
+                .register("https", sslInstance.getSSLConnSf(sslPv)).build();
         //设置连接池大小
         PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
         connManager.setMaxTotal(maxTotal);// Increase max total connection to $maxTotal

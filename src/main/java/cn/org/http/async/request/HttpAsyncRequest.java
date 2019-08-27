@@ -115,9 +115,6 @@ public class HttpAsyncRequest {
             case 0:// HttpGet
                 request = new HttpGet(url);
                 break;
-            case 1:// HttpPost
-                request = new HttpPost(url);
-                break;
             case 2:// HttpHead
                 request = new HttpHead(url);
                 break;

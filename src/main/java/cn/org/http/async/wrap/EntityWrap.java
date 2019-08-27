@@ -37,12 +37,12 @@ public class EntityWrap {
     /**
      * 参数转换，将map中的参数，转到参数列表中
      *
-     * @param nvps     参数列表
+     * @param nValPairs     参数列表
      * @param map      参数列表（map）
      * @param encoding 编码
      * @return 返回HttpEntity
      */
-    public static HttpEntity mapConvertHttpEntity(List<NameValuePair> nvps, Map<String, Object> map, String encoding) throws UnsupportedEncodingException {
+    public static HttpEntity mapConvertHttpEntity(List<NameValuePair> nValPairs, Map<String, Object> map, String encoding) throws UnsupportedEncodingException {
         HttpEntity entity = null;
         if (map != null && map.size() > 0) {
             boolean isSpecial = false;
@@ -118,14 +118,14 @@ public class EntityWrap {
                         }
                         break;
                     } else {
-                        nvps.add(new BasicNameValuePair(entry.getKey(), String.valueOf(entry.getValue())));
+                        nValPairs.add(new BasicNameValuePair(entry.getKey(), String.valueOf(entry.getValue())));
                     }
                 } else {
-                    nvps.add(new BasicNameValuePair(entry.getKey(), String.valueOf(entry.getValue())));
+                    nValPairs.add(new BasicNameValuePair(entry.getKey(), String.valueOf(entry.getValue())));
                 }
             }
             if (!isSpecial) {
-                entity = new UrlEncodedFormEntity(nvps, encoding);
+                entity = new UrlEncodedFormEntity(nValPairs, encoding);
             }
         }
         return entity;
