@@ -42,6 +42,11 @@ public class HttpAsync {
         return this;
     }
 
+    /**这里有待增加 当post请求如何区分 body参数*/
+    HttpAsync addBodyParams(){
+        return this;
+    }
+
 
     HttpAsyncResponse get() {
         return curl(threadLocal.get().method(HttpMethods.GET));
