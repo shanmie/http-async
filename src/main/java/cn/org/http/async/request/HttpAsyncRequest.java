@@ -47,7 +47,8 @@ public class HttpAsyncRequest {
             List<NameValuePair> nValPairs = new ArrayList<>();
             if (request.getClass() == HttpGet.class) {
                 int idx = config.url().indexOf("?");
-                System.out.println("请求地址：" + config.url().substring(0, (idx > 0 ? idx : config.url().length())));
+                String url = config.url().substring(0, (idx > 0 ? idx : config.url().length()));
+                log.info("请求地址 : {}" , url);
                 if (idx > 0) {
                     //检测url中是否存在参数
                     //注：截取get请求url参数
