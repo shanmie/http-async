@@ -50,7 +50,7 @@ public class EntityWrap {
             for (Map.Entry<String, Object> entry : map.entrySet()) {
                 if (SPECIAL_ENTITY.contains(entry.getKey())) {//判断是否在之中
                     isSpecial = true;
-                    if (ENTITY_STRING.equals(entry.getKey())) {//string
+                    if (ENTITY_STRING.equals(entry.getKey())) {     //string
                         entity = new StringEntity(String.valueOf(entry.getValue()), encoding);
                         break;
                     } else if (ENTITY_JSON.equals(entry.getKey())) {//json

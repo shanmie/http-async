@@ -1,6 +1,7 @@
 package cn.org.http.async;
 
 import cn.org.http.async.config.HttpConfig;
+import cn.org.http.async.cons.EntityCons;
 import cn.org.http.async.enums.HttpMethods;
 import cn.org.http.async.request.HttpAsyncRequest;
 import cn.org.http.async.response.HttpAsyncResponse;
@@ -37,16 +38,11 @@ public class HttpAsync {
         return this;
     }
 
-    HttpAsync addParams(String json) {
-        threadLocal.get().json(json);
+    /** post请求 设置消息体参数 注:(和 addParams 函数有冲突 使用时 二选一 ) */
+    HttpAsync addEntityParams(String jsonString){
+        threadLocal.get().json(jsonString);
         return this;
     }
-
-    /**这里有待增加 当post请求如何区分 body参数*/
-    HttpAsync addBodyParams(){
-        return this;
-    }
-
 
     HttpAsyncResponse get() {
         return curl(threadLocal.get().method(HttpMethods.GET));

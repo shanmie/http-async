@@ -162,9 +162,13 @@ public class HttpConfig {
      */
     public HttpConfig json(String json) {
         this.json = json;
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
         map.put(EntityCons.ENTITY_JSON, json);
-        maps.set(map);
+        if (maps.get() == null){
+            maps.set(map);
+        }
+        maps.get().putAll(map);
+        //maps.set(map);
         return this;
     }
 
